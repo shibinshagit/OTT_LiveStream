@@ -6,10 +6,12 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Provider } from "react-redux"
+import { store } from "@/lib/store"
 import Header from "@/components/organisms/Header"
 import Footer from "@/components/organisms/Footer"
 
-export default function SubscriptionPage() {
+function SubscriptionContent() {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "annual">("monthly")
 
   const plans = [
@@ -278,5 +280,13 @@ export default function SubscriptionPage() {
 
       <Footer />
     </div>
+  )
+}
+
+export default function SubscriptionPage() {
+  return (
+    <Provider store={store}>
+      <SubscriptionContent />
+    </Provider>
   )
 }

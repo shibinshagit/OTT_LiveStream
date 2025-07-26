@@ -21,8 +21,10 @@ import { Badge } from "@/components/ui/badge"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Provider } from "react-redux"
+import { store } from "@/lib/store"
 
-export default function AdminDashboard() {
+function AdminDashboardContent() {
   const [activeTab, setActiveTab] = useState("overview")
 
   // Mock data
@@ -505,5 +507,13 @@ export default function AdminDashboard() {
         </Tabs>
       </main>
     </div>
+  )
+}
+
+export default function AdminDashboard() {
+  return (
+    <Provider store={store}>
+      <AdminDashboardContent />
+    </Provider>
   )
 }
